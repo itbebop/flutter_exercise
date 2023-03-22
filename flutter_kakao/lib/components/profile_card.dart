@@ -11,11 +11,11 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProfileScreen(user: me),
+            builder: (context) => ProfileScreen(user: user),
           ),
         );
       },
@@ -26,7 +26,9 @@ class ProfileCard extends StatelessWidget {
             user.backgroundImage,
           ),
         ),
-        title: Text(user.name, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+        title: Text(
+          user.name,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
         ),
         subtitle: Text(
           user.intro,

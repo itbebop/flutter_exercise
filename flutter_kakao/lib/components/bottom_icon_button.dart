@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
-class BottonIconButton extends StatelessWidget {
-
+class BottomIconButton extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  const BottonIconButton({required this.icon, required this.text});
+  const BottomIconButton({required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {

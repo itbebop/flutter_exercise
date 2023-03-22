@@ -4,13 +4,19 @@ import 'package:flutter_kakao/models/user.dart';
 import '../components/profile_card.dart';
 
 class FriendScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("친구"),
+        title: Text(
+          "친구",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -28,13 +34,12 @@ class FriendScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
-              children: List.generate(
-                  friends.length,
-                  (index) => ProfileCard(user: friends[index]),
-              ),
-            )
-          ),
+              child: ListView(
+            children: List.generate(
+              friends.length,
+              (index) => ProfileCard(user: friends[index]),
+            ),
+          )),
         ],
       ),
     );
