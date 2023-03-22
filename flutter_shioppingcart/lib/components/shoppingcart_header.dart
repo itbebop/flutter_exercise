@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_shioppingcart/constants.dart';
 
 class ShoppingCartHeader extends StatefulWidget {
-
   @override
   State<ShoppingCartHeader> createState() => _ShoppingCartHeaderState();
 }
 
 class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
-
   int selectedId = 3;
 
   List<String> selectedPic = [
@@ -22,29 +20,27 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
   Widget build(BuildContext context) {
     print("다시 빌드");
     return Column(
-      children: [
-        _buildHeaderPic(),
-        _buildHeaderSelector()
-
-      ],
+      children: [_buildHeaderPic(), _buildHeaderSelector()],
     );
   }
 
-  Widget _buildHeaderPic(){
+  Widget _buildHeaderPic() {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: AspectRatio(
-          aspectRatio: 5 / 3,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(25),
-            child: Image.asset(selectedPic[selectedId],
-                fit: BoxFit.cover,
-            ),
+        aspectRatio: 5 / 3,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25),
+          child: Image.asset(
+            selectedPic[selectedId],
+            fit: BoxFit.cover,
           ),
+        ),
       ),
     );
   }
-  Widget _buildHeaderSelector(){
+
+  Widget _buildHeaderSelector() {
     return Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, top: 10, bottom: 30),
       child: Row(
@@ -61,24 +57,24 @@ class _ShoppingCartHeaderState extends State<ShoppingCartHeader> {
 
   Container _buildHeaderSelectorButton(int id, IconData mIcon) {
     return Container(
-        width: 70,
-        height: 70,
-        decoration: BoxDecoration(
-          color: id == selectedId ? kAccentColor : kSecondaryColor,
-          borderRadius: BorderRadius.circular(20),
+      width: 70,
+      height: 70,
+      decoration: BoxDecoration(
+        color: id == selectedId ? kAccentColor : kSecondaryColor,
+        borderRadius: BorderRadius.circular(50),
+      ),
+      child: IconButton(
+        icon: Icon(
+          mIcon,
         ),
-        child: IconButton(
-          icon: Icon(
-              mIcon,
-          ),
-          onPressed: (){
-            setState(() {
-              selectedId = id;
-            });
-            print("id : $id");
-            print("selectedId : $selectedId");
-          },
-        ),
-      );
+        onPressed: () {
+          setState(() {
+            selectedId = id;
+          });
+          print("id : $id");
+          print("selectedId : $selectedId");
+        },
+      ),
+    );
   }
 }

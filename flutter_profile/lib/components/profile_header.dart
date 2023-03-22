@@ -1,15 +1,17 @@
-
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         _buildHeaderAvatar(),
-        SizedBox(width: 20,),
+        SizedBox(
+          width: 20,
+        ),
         _buildHeaderProfile(),
       ],
     );
@@ -39,12 +41,12 @@ class ProfileHeader extends StatelessWidget {
           ),
         ),
         Text(
-            "개발자",
-            style: TextStyle(fontSize: 20),
+          "개발자",
+          style: TextStyle(fontSize: 20),
         ),
         Text(
-            "낙스넷",
-            style: TextStyle(fontSize: 15),
+          "Google",
+          style: TextStyle(fontSize: 15),
         ),
       ],
     );
