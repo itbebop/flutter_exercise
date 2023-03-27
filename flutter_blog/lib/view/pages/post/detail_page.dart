@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/pages/post/update_page.dart';
+import 'package:flutter_blog/view/pages/post/update_page.dart';
 import 'package:get/get.dart';
 
 import 'home_page.dart';
@@ -31,7 +31,8 @@ class DetailPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    Get.off(HomePage()); // 뒤로가기(Get.back), Get.to(HomePage()), Get.off 중 아무거나 써도?
+                    Get.off(
+                        HomePage()); // 뒤로가기(Get.back), Get.to(HomePage()), Get.off 중 아무거나 써도?
                     // 상태관리로 관리할 수 있어서 상관없음?
                   },
                   child: Text("삭제"),

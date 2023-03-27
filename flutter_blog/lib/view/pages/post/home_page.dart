@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/pages/post/write_page.dart';
-import 'package:flutter_blog/pages/user/login_page.dart';
-import 'package:flutter_blog/pages/user/user_info.dart';
 import 'package:flutter_blog/size.dart';
+import 'package:flutter_blog/view/pages/post/write_page.dart';
 import 'package:get/get.dart';
 
+import '../user/login_page.dart';
+import '../user/user_info.dart';
 import 'detail_page.dart';
 
 class HomePage extends StatelessWidget {

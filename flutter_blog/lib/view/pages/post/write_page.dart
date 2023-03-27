@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_blog/components/custom_Text_Area.dart';
-import 'package:flutter_blog/components/custom_text_form_field.dart';
 import 'package:flutter_blog/util/validator_util.dart';
 import 'package:get/get.dart';
 
+import '../../components/custom_Text_Area.dart';
 import '../../components/custom_elevated_button.dart';
+import '../../components/custom_text_form_field.dart';
 import 'home_page.dart';
 
 class WritePage extends StatelessWidget {
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -31,8 +30,8 @@ class WritePage extends StatelessWidget {
               ),
               Custom_ElevatedButton(
                 text: "글쓰기",
-                funcPageRoute: (){
-                  if(_formKey.currentState!.validate()) {
+                funcPageRoute: () {
+                  if (_formKey.currentState!.validate()) {
                     Get.off(HomePage());
                   }
                 },
