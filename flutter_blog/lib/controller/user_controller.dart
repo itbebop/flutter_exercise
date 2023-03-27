@@ -9,5 +9,6 @@ class UserController extends GetxController {
     // 앞에서 기다리므로 여기서도 기다려야함
     String token = await _userRepository.login(username, password);
     jwtToken = token;
+    print("jwtToken : $jwtToken");
   }
 }
