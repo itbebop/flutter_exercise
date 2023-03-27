@@ -1,0 +1,15 @@
+1. main에서 Join()을 처음 화면으로 띄웠을때 에러
+Could not navigate to initial route.
+The requested route name was: "/HomePage"
+There was no corresponding route in the app, and therefore the initial route specified will be ignored and "/" will be used instead.
+> 로그인화면을 처음으로 띄우면 에러 없어짐
+> 아래가 오류 이유인가 확인 필요
+Since you used '/' to divide your routes it's interpreted as "sub-routes". Actually it is trying to go through these routes one after an other:
+* /
+* /animals
+* /animals/cats
+* /animals/cats/lolcats
+And since /animals/cats isn't define, t is getting an error and then is coming back to initial route : /
+
+If you want to solve this problem rename your routes with underscore like this : /animals_cats_lolcats So it won't try to get /animals/cats which doesn't exist
+
