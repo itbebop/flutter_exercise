@@ -62,7 +62,7 @@ class JoinPage extends StatelessWidget {
             onPressed: () {
               Get.to(LoginPage());
             },
-            child: Text("로그인 페이지로 이동ㅁㄴ"),
+            child: Text("로그인 페이지로 이동"),
           )
         ],
       ),

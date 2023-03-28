@@ -32,8 +32,12 @@ class HomePage extends StatelessWidget {
           itemCount: p.posts.length,
           itemBuilder: (context, index) {
             return ListTile(
-              onTap: () {
-                Get.to(DetailPage(index), arguments: "arguments 속성 테스트");
+              onTap: () async {
+                await p.findById(p.posts[index].id!); // null이 절대 아님,
+                // post_controller에서 id 받을때 await하므로 여기서도 기다려야 함ㄴㄴㅁ
+                Get.to(() => DetailPage(p.posts[index].id),
+                    // DetailPage의 int id null처리해줘야함
+                    arguments: "arguments 속성 테스트");
               },
               title: Text("${p.posts[index].title}"),
               leading: Text("${p.posts[index].id}"),
@@ -62,7 +66,7 @@ class HomePage extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  Get.to(WritePage());
+                  Get.to(() => WritePage());
                 },
                 child: Text(
                   "글쓰기",
@@ -76,7 +80,7 @@ class HomePage extends StatelessWidget {
               Divider(),
               TextButton(
                 onPressed: () {
-                  Get.to(UserInfo());
+                  Get.to(() => UserInfo());
                 },
                 child: Text(
                   "회원정보보기",
