@@ -11,7 +11,10 @@ import 'join_page.dart';
 
 class LoginPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
-  UserController u = Get.put(UserController());
+  UserController u = Get.put(UserController()); // 에러나서 앞에 final 적어야?
+
+  final _username = TextEditingController();
+  final _password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +27,7 @@ class LoginPage extends StatelessWidget {
               alignment: Alignment.center,
               height: 200,
               child: Text(
-                "로그인 페이지",
+                "로그인 페이지 ${u.isLogin}",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
@@ -42,23 +45,32 @@ class LoginPage extends StatelessWidget {
       child: Column(
         children: [
           CustomTextFormField(
+            controller: _username,
             hint: "UserName",
             funcValidator: validateUsername(),
           ),
           CustomTextFormField(
+            controller: _password,
             hint: "Password",
             funcValidator: validatePassword(),
           ),
           Custom_ElevatedButton(
             text: "로그인",
-            funcPageRoute: () {
+            funcPageRoute: () async {
               if (_formKey.currentState!.validate()) {
-                u.login("ssar", "1234");
                 //Get.to(() => HomePage());
                 /*
                 UserRepository u = UserRepository();
                 u.login("ssar", "1234");
                  */
+                String token = await u.login(_username.text.trim(), _password.text.trim());
+                if (token != "-1"){
+                  //print("토큰 정상적으로 받음");
+                  Get.to(() => HomePage());
+                }else{
+                  //print("토큰 못받음");
+                  Get.snackbar("로그인 시도", "로그인 실패");
+                }
               }
             },
           ),

@@ -13,3 +13,5 @@ And since /animals/cats isn't define, t is getting an error and then is coming b
 
 If you want to solve this problem rename your routes with underscore like this : /animals_cats_lolcats So it won't try to get /animals/cats which doesn't exist
 
+ㅁ 환경변수 추가
+set path=%path%;C:\Program Files\Java\jdk-20\bin;

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_blog/controller/post_controller.dart';
+import 'package:flutter_blog/controller/user_controller.dart';
 import 'package:flutter_blog/size.dart';
+import 'package:flutter_blog/util/jwt.dart';
 import 'package:flutter_blog/view/pages/post/write_page.dart';
 import 'package:get/get.dart';
 
@@ -12,28 +15,41 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //UserController u = Get.put(UserController());
+    // put : 없으면 만들고, 있으면 찾기
+    UserController u = Get.find();
+    // 객체 생성(create), 초기화 (initialize)
+    PostController p = Get.put(PostController());
+    //p.findAll();
+
     return Scaffold(
       drawer: _navigation(context),
-      appBar: AppBar(),
-      body: ListView.separated(
-        itemCount: 20,
-        itemBuilder: (context, index) {
-          return ListTile(
-            onTap: () {
-              Get.to(DetailPage(index), arguments: "arguments 속성 테스트");
-            },
-            title: Text("제목1"),
-            leading: Text("1"),
-          );
-        },
-        separatorBuilder: (context, index) {
-          return Divider();
-        },
+      appBar: AppBar(
+        title: Obx(() => Text("${u.isLogin}")), // Obx로 묶어야 변경/관찰 가능한 변수가 됨
+      ),
+      body: Obx(
+        () => ListView.separated(
+          itemCount: p.posts.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              onTap: () {
+                Get.to(DetailPage(index), arguments: "arguments 속성 테스트");
+              },
+              title: Text("${p.posts[index].title}"),
+              leading: Text("${p.posts[index].id}"),
+            );
+          },
+          separatorBuilder: (context, index) {
+            return Divider();
+          },
+        ),
       ),
     );
   }
 
   Widget _navigation(BuildContext context) {
+    UserController u = Get.find();
+
     return Container(
       width: getDrawerWidth(context),
       height: double.infinity,
@@ -74,6 +90,7 @@ class HomePage extends StatelessWidget {
               Divider(),
               TextButton(
                 onPressed: () {
+                  u.logout();
                   Get.to(LoginPage());
                 },
                 child: Text(
