@@ -63,8 +63,11 @@ class LoginPage extends StatelessWidget {
                 UserRepository u = UserRepository();
                 u.login("ssar", "1234");
                  */
+                print(_username.text.trim());
+                print(_password.text.trim());
                 int result =
                     await u.login(_username.text.trim(), _password.text.trim());
+                print(result);
                 if (result == 1) {
                   //print("토큰 정상적으로 받음");
                   Get.to(() => HomePage());

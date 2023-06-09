@@ -1,3 +1,4 @@
+2023-04-04-[Body 챌린지] 중간검사 결과 발표 및 6주차 미션 안내 (※-20230407090642
 1. main에서 Join()을 처음 화면으로 띄웠을때 에러
 Could not navigate to initial route.
 The requested route name was: "/HomePage"

@@ -1,8 +1,8 @@
 import 'package:flutter_blog/util/jwt.dart';
 import 'package:get/get.dart';
 
-const host = "http://192.168.219.125:8080"; // ip
-//const host = "http://10.65.81.183:8080"; // ip
+//const host = "http://192.168.219.125:8080"; // ip
+const host = "http://10.65.81.183:8080"; // ip
 
 // 통신 역할
 class PostProvider extends GetConnect {

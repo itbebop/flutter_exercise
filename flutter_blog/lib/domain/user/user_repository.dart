@@ -1,6 +1,7 @@
 import 'package:flutter_blog/controller/dto/login_request_dto.dart';
 import 'package:flutter_blog/domain/user/user.dart';
 import 'package:flutter_blog/domain/user/user_provider.dart';
+import 'package:flutter_blog/util/convert_utf8.dart';
 import 'package:get/get.dart';
 
 import '../../controller/dto/CMRespDto.dart';
@@ -16,11 +17,13 @@ class UserRepository {
     Response response = await _userProvider.login(loginReqDto.toJson());
     dynamic headers = response.headers;
     dynamic body = response.body;
-
-    // dynamic converBody = convertUtf8ToObject(body);
+    print("headers : $headers");
+    print("body : $body");
+    //dynamic converBody = convertUtf8ToObject(body);
+    //CMRespDto cmRespDto = CMRespDto.fromJson(converBody);
     CMRespDto cmRespDto = CMRespDto.fromJson(body);
 
-    if (cmRespDto.code == 1) {
+    if (cmRespDto.code == 1 ) {
       User principal = User.fromJson(cmRespDto.data);
 
       String token = headers["authorization"];

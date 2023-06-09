@@ -38,7 +38,7 @@ Function validateEmail() {
     if (value!.isEmpty) {
       // 순서가 한글체크 전에 와야
       return "공백이 들어갈 수 없습니다.";
-    } else if (!isEmail(value)) {
+    } else if (!isEmail(value)) { // pub.dev의 validator 문서 참고
       return "이메일 형식에 맞지 않습니다.";
     } else {
       return null;

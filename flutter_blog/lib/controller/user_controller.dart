@@ -18,7 +18,7 @@ class UserController extends GetxController {
   Future<int> login(String username, String password) async {
     // 앞에서 기다리므로 여기서도 기다려야함
     User principal = await _userRepository.login(username, password);
-
+    print(principal);
     if (principal.id != null) {
       this.isLogin.value = true;
       this.principal.value = principal;
