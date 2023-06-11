@@ -15,7 +15,12 @@ class LoginPage extends StatelessWidget {
 
   final _username = TextEditingController();
   final _password = TextEditingController();
-
+  /*
+  controller 작업 순서
+  1. Login 페이지에 final _username... /_password... 추가
+  2. custom_text_form_field에 걸어줌 -> 여기 가서 final로 선언하고 컨트롤러 안에 넣어줌
+  3. 각 CustomFormField 안에 controller: _username, controller: _password 넣어줌
+  */
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,9 +66,10 @@ class LoginPage extends StatelessWidget {
                 //Get.to(() => HomePage());
                 /*
                 UserRepository u = UserRepository();
-                u.login("ssar", "1234");
+                ver1. u.login("ssar", "1234");
+                ver2. String toke = await u.login(_username.text.trim(), _password.text.trim()); // 입력한 아이디/비번으로 로그인하여 토큰 받아옴
                  */
-                print(_username.text.trim());
+                print(_username.text.trim()); // trim()은 양옆의 공백 제거(사용자 실수하지 않도록)
                 print(_password.text.trim());
                 int result =
                     await u.login(_username.text.trim(), _password.text.trim());

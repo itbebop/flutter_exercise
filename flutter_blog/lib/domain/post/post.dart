@@ -19,7 +19,6 @@ class Post {
       this.updated});
 
   // 통신을 위해서 json처럼 생긴 문자열 => Dart 오브젝트로 변경
-
   Post.fromJson(Map<String, dynamic> json) // 이름 있는 생성자
       : id = json["id"],
         title = json["title"],

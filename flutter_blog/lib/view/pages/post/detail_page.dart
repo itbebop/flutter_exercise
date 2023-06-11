@@ -22,27 +22,29 @@ class DetailPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar( // 앱바가 있어야 뒤로가기 가능. 먼저 만들어놓을 것
           title: Text(
-        "게시글 아이디 : $id, 로그인 상태 : ${u.isLogin}",
-      )),
+            "게시글 아이디 : $id, 로그인 상태 : ${u.isLogin}",
+          ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Obx(
+        child: Obx( // Obx에 접근만 하면 id를 굳이 넘겨받을 필요없음? (이해안감)
           () => Column(
             children: [
               Text(
-                "${p.post.value.title}", // value붙여야
+                "${p.post.value.title}", // 글제목
+                // value붙여야
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 35,
                 ),
               ),
               Divider(),
-              u.principal.value.id == p.post.value.user!.id
+              u.principal.value.id == p.post.value.user!.id // 3항 연산자 ( 두 개 같으면 아래 row 아니면 빈 SizedBox출력)
                   ? Row(
                       children: [
                         ElevatedButton(
                           onPressed: () async {
-                            await p.deleteById(p.post.value.id!);
+                            await p.deleteById(p.post.value.id!); // 삭제되는 것 기다렸다가 homepage로 가야해서 await
                             Get.off(() => HomePage()); // Getoff는 페이지 이동후 뒤로가기 막는 것
                             // Get.back(); // 뒤로 돌아가고 스택에서 빼는 것
                             // 뒤로가기(Get.back), Get.to(HomePage()), Get.off 중 아무거나 써도?
@@ -53,7 +55,9 @@ class DetailPage extends StatelessWidget {
                         SizedBox(width: 10),
                         ElevatedButton(
                           onPressed: () {
-                            Get.to(() => UpdatePage()); // Detail페이지의 id 등 값 들고가야
+                            Get.to(() => UpdatePage()); // Detail페이지의 id 등 값 들고가야하지만 id는 어차피 controller에서 관리하는 거라서 안들고 갈 것 (삭제와는 다른 방식)
+                            // Getoff로 막으려고 했는데 그러면 뒤로가기가 안되서 그냥 to로 둠. 상태관리로 해결할 것
+                            // 같은 페이지로 덮어씌우는 게 제일 낫겠지만
                           },
                           child: Text("수정"),
                         ),
@@ -64,7 +68,7 @@ class DetailPage extends StatelessWidget {
                 // 글 내용 길어질 수 있으므로 Scroll되도록
                 // ListView로 하기엔 Child 하나밖에 없으므로 SingleChildScrollView 사용
                 child: SingleChildScrollView(
-                  child: Text("${p.post.value.content}"),
+                  child: Text("${p.post.value.content}"), // 글 내용
                 ),
               ),
             ],
