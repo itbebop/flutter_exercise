@@ -1,4 +1,4 @@
-import 'package:flutter_blog/controller/dto/CMRespDto.dart';
+import 'package:flutter_blog/controller/dto/cm_resp_dto.dart';
 import 'package:flutter_blog/controller/dto/save_or_update_request_dto.dart';
 import 'package:flutter_blog/domain/post/post.dart';
 import 'package:flutter_blog/domain/post/post_provider.dart';

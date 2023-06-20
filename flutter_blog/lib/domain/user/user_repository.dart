@@ -4,7 +4,7 @@ import 'package:flutter_blog/domain/user/user_provider.dart';
 import 'package:flutter_blog/util/convert_utf8.dart';
 import 'package:get/get.dart';
 
-import '../../controller/dto/CMRespDto.dart';
+import '../../controller/dto/cm_resp_dto.dart';
 import '../../util/jwt.dart';
 
 // 통신 호출해서 응답받은 데이터를 가공(Json->Dart오브젝트)
